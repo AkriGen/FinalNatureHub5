@@ -24,11 +24,12 @@ export class AddressService {
 
   // Update an existing address
   updateAddress(address: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/${address.AddressID}`, address);
+    return this.http.put<any>(`${this.apiUrl}/${address.AddressId}`, address);  // Make sure the API expects 'AddressId'
   }
 
   // Remove an address by ID
-  removeAddress(address: any): Observable<any> {
-    return this.http.delete<any>(`${this.apiUrl}/${address.AddressID}`);
+  removeAddress(AddressId: number): Observable<any> {
+    // Make sure that the address object passed contains the correct field name 'AddressId'
+    return this.http.delete<any>(`${this.apiUrl}/${AddressId}`);  // Fix AddressId here if needed
   }
 }

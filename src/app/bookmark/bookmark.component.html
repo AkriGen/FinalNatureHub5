@@ -13,8 +13,10 @@
        <span *ngIf="!card.Remediesimg">No Image</span>              
             <div class="card-content">
               <h4>{{ card.RemedyName }}</h4>
-              <p>{{ card.Description }}</p>
+              <p><strong>Description:</strong> {{ card.Description }}</p>
               <p><strong>Benefits:</strong> {{ card.Benefits }}</p>
+              <p><strong>Preparation:</strong> {{ card.PreparationMethod }}</p>
+              <p><strong>Usage:</strong> {{ card.UsageInstructions }}</p>
               <button class="btn-remove" (click)="removeBookmark(card)">Remove</button>
             </div>
           </div>

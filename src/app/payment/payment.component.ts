@@ -104,10 +104,15 @@ export class PaymentComponent implements OnInit {
 
   // Method to delete an address
   deleteAddress(address: any): void {
+    // First, check if the address being deleted is the selected address
+    const isSelected = this.selectedAddress?.AddressId === address.AddressId;
+
     this.addressService.removeAddress(address.AddressId).subscribe(() => {
       // After deletion, filter out the deleted address from the savedAddresses list
       this.savedAddresses = this.savedAddresses.filter((addr) => addr.AddressId !== address.AddressId);
-      if (this.selectedAddress === address) {
+
+      // If the deleted address was selected, reset selectedAddress
+      if (isSelected) {
         this.selectedAddress = null;
       }
     }, error => {

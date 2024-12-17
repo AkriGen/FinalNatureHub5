@@ -57,7 +57,7 @@ const routes: Routes = [
   {path:'address',component:AddressComponent,canActivate: [AuthGuard],data:{role:'user'}},
   {path:'skin',component:SkinComponent,canActivate: [AuthGuard]},
   {path:'body',component:BodyComponent,canActivate: [AuthGuard]},
-  {path:'hair',component:HairComponent,canActivate: [AuthGuard]},
+  {path:'hair',component:HairComponent,canActivate: [AuthGuard]}, 
   {path:'immunity',component:ImmunityComponent,canActivate: [AuthGuard]},
   {path:'digestion',component:DigestionComponent,canActivate: [AuthGuard]},
   {path:'successpay',component:PaysuccessfullComponent,canActivate: [AuthGuard],data:{role:'user'}},
