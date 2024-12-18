@@ -18,7 +18,7 @@
           <li *ngFor="let address of savedAddresses" (click)="selectAddress(address)" 
               [class.selected]="selectedAddress === address">
             <div class="d-flex justify-content-between fs-5">
-              <div><strong>{{ address.Street }}</strong>, {{ address.City }}, {{ address.Country }}</div>
+              <div><strong>{{ address.Street }}</strong>, {{ address.City }}, {{ address.Country }},{{ address.ZipCode }}</div>
               <button class="btn btn-danger btn-sm ml-3" (click)="deleteAddress(address)">Delete</button>
             </div>
           </li>

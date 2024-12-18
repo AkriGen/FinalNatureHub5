@@ -45,6 +45,6 @@
   <!-- Total and Proceed to Payment Button -->
   <div *ngIf="cartItems.length > 0" class="text-center mt-4">
     <h4>Total: {{ cartTotal | currency: 'INR' }}</h4>
-    <button class="btn btn-success mt-3 w-50" (click)="proceedToPayment()">Proceed to Payment</button>
+    <button class="btn btn-success m-4 w-50" (click)="proceedToPayment()">Proceed to Payment</button>
   </div>
 </div>

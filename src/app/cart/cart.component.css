@@ -69,9 +69,10 @@
   }
   
   .alert {
-    font-size: 1.2rem;
+    font-size: 3rem;
     color: #f08a00;
     font-weight: bold;
+    height: 370px;
   }
   
   /* Additional style for buttons */

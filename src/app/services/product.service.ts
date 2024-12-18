@@ -15,4 +15,11 @@ export class ProductService {
   getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>(this.apiUrl);
   }
+
+ // Add an API method to update stock quantity
+ updateProductStock(productId: number, stockQuantity: number): Observable<any> {
+  return this.http.put(`${this.apiUrl}/${productId}/update-stock`, { StockQuantity: stockQuantity });
 }
+}
+
+

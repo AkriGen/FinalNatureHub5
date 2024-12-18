@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ToastrServiceWrapper } from '../toastr.service';
+import { ProductService } from './product.service';
 
 export interface Product {
   ProductId: number;
@@ -19,7 +20,7 @@ export class CartService {
 
   private cartItems: { product: Product; quantity: number }[] = [];
 
-  constructor(private toastr:ToastrServiceWrapper) {
+  constructor(private toastr:ToastrServiceWrapper, private productService:ProductService) {
     // Try to load cart from localStorage if available
     const savedCart = localStorage.getItem('cart');
     if (savedCart) {
@@ -28,34 +29,32 @@ export class CartService {
   }
 
   addToCart(product: Product) {
-    if (!product || !product.ProductId) {
-      console.error('Invalid product:', product); // Log the invalid product
-      return; // Exit if product is invalid
+    if (product.StockQuantity <= 0) {
+      this.toastr.warning(`${product.ProductName} is out of stock.`);
+      return;
     }
   
     const existingProduct = this.cartItems.find(item => item.product.ProductId === product.ProductId);
-    
-    // Check if product exists in the cart
+  
     if (existingProduct) {
-      // Check if quantity can be increased without exceeding stock
-      if (existingProduct.quantity < product.StockQuantity) {
-        existingProduct.quantity++;
-        this.toastr.success(`${product.ProductName} is added to cart successfully!!`)
-      } else {
-        // Notify user if out of stock
-        this.toastr.warning(`Sorry, only ${product.StockQuantity} left in stock.`)
-      }
+      existingProduct.quantity += 1;
     } else {
-      // Add product to cart only if stock is available
-      if (product.StockQuantity > 0) {
-        this.cartItems.push({ product, quantity: 1 });
-      } else {
-        alert('Out of stock!');
-      }
+      this.cartItems.push({ product, quantity: 1 });
     }
   
-    this.saveCart(); // Save cart after adding/updating
+    product.StockQuantity -= 1;
+    this.productService.updateProductStock(product.ProductId, product.StockQuantity).subscribe(
+      () => {
+        console.log(`Stock updated successfully for ${product.ProductName}`);
+      },
+      (error) => {
+        console.error(`Failed to update stock for ${product.ProductName}:`, error);
+      }
+    );
+  
+    this.saveCart();
   }
+    
   
 
   // Method to get the current cart items
@@ -77,7 +76,8 @@ export class CartService {
       }
     }
   }
-
+  
+  
   // Method to save the cart to localStorage
   saveCart() {
     localStorage.setItem('cart', JSON.stringify(this.cartItems));  // Save to localStorage

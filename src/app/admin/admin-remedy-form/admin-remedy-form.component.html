@@ -56,12 +56,14 @@
         class="form-control"
         [(ngModel)]="remedy.Benefits"
         name="benefits"
+        minlength="10"
         rows="3"
         #benefits="ngModel"
         placeholder="Enter benefits"
       ></textarea>
       <div *ngIf="benefits.invalid && benefits.touched" class="text-danger">
         <small *ngIf="benefits.errors?.['required']">Benefits are required.</small>
+        <small *ngIf="benefits.errors?.['minlength']">Benefits must be at least 10 characters long.</small>
       </div>
     </div>
 
@@ -74,11 +76,15 @@
         [(ngModel)]="remedy.PreparationMethod"
         name="preparationMethod"
         rows="3"
+        minlength="10"
+
         #preparationMethod="ngModel"
         placeholder="Describe the preparation method"
       ></textarea>
       <div *ngIf="preparationMethod.invalid && preparationMethod.touched" class="text-danger">
         <small *ngIf="preparationMethod.errors?.['required']">Preparation method is required.</small>
+        <small *ngIf="preparationMethod.errors?.['minlength']">Preparation method must be at least 10 characters long.</small>
+
       </div>
     </div>
 
@@ -90,12 +96,15 @@
         class="form-control"
         [(ngModel)]="remedy.UsageInstructions"
         name="usageInstructions"
+        minlength="10"
         rows="3"
         #usageInstructions="ngModel"
         placeholder="Provide usage instructions"
       ></textarea>
       <div *ngIf="usageInstructions.invalid && usageInstructions.touched" class="text-danger">
         <small *ngIf="usageInstructions.errors?.['required']">Usage instructions are required.</small>
+        <small *ngIf="usageInstructions.errors?.['minlength']">Usage instructions must be at least 10 characters long.</small>
+
       </div>
     </div>
 

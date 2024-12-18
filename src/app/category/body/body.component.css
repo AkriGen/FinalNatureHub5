@@ -6,11 +6,16 @@
   transition: all 0.3s ease-in-out;
 }
 
+
+
 .product-card {
   background: #f5f5f5;
   padding: 15px;
   height: 500px;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column; /* Align content vertically */
+  justify-content: space-between; /* Space out content evenly */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
 }

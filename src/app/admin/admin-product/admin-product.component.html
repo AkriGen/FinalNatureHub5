@@ -16,6 +16,7 @@
           <th>Product Image</th>
           <th>Product Description</th>
           <th>Price</th>
+          <th>StockQuantity</th>
           <th>Category Id</th>
           <th>Actions</th>
         </tr>
@@ -33,6 +34,7 @@
           </td>
           <td>{{ product.Description }}</td>
           <td><span>₹</span>{{ product.Price }}</td>
+          <td>{{product.StockQuantity}}</td>
           <td>{{ product.CategoryId }}</td>
           <td>
             <button class="btn btn-primary btn-sm me-2" (click)="onEditProduct(product)">Edit</button>

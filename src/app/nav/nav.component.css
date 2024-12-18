@@ -1,10 +1,13 @@
 /* Navbar styles */
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
     flex-wrap: wrap;
+    height: 100px;
+   
     z-index: 1; /* Ensures navbar content appears on top */
     
   }
@@ -29,7 +32,13 @@
   .navbar-right {
     display: flex;
     align-items: center;
+    font-size: 28px; /* Adjust the size of the text */
+    font-weight: bold; /* Makes the text bolder */
     justify-content: flex-end;
+    text-transform: capitalize; /* Ensures proper casing */
+    color: rgb(13, 69, 158); /* Matches the navbar theme */
+    text-decoration: none; /* Removes underline */
+    transition: all 0.3s ease; /* Adds smooth effect on hover */
     width: auto;
   }
   
@@ -38,6 +47,16 @@
     font-size: 24px;
     font-weight: bold;
     margin-left: 15px;
+  }
+
+  .navbar-heading {
+    margin-left: 20px;
+    font-size: 18px; /* Adjust the size of the text */
+    font-weight: bold; /* Makes the text bolder */
+    text-transform: capitalize; /* Ensures proper casing */
+    color: rgb(13, 69, 158); /* Matches the navbar theme */
+    text-decoration: none; /* Removes underline */
+    transition: all 0.3s ease; /* Adds smooth effect on hover */
   }
   
   /* Animated Login/Signup Button */
@@ -60,6 +79,8 @@
     display: flex;
     justify-content: center;
     padding: 20px 0;
+    font-size: 48px; /* Adjust the size of the text */
+    font-weight: bold; /* Makes the text bolder */
     color: rgb(13, 69, 158);
     z-index: 2; /* Ensures links are above the blurred background */
   }
