@@ -40,7 +40,6 @@ import { AuthGuard } from './auth.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {  HttpClient, HttpClientModule } from '@angular/common/http';
 import { UserloginComponent } from './auth/userlogin/userlogin.component';
-import { PaysuccessfullComponent } from './paysuccessfull/paysuccessfull.component';
 import {  ToastrServiceWrapper } from './toastr.service';
 import { ToastrModule } from 'ngx-toastr';
 import { DashboardComponent } from './Auth/dashboard/dashboard.component';
@@ -70,7 +69,6 @@ export function tokenGetter() {
     ImmunityComponent,
     DigestionComponent,
     PopupComponent,
-    PaysuccessfullComponent,
     DashboardComponent
     ],
   imports: [

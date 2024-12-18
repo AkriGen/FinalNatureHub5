@@ -87,7 +87,7 @@
 
       <div class="total">
         <h4>Total: {{ getCartTotal()| currency: 'INR'}}</h4>
-        <button class="btn btn-danger mt-4 mb-5" (click)="proceedToPay()">Proceed to Pay</button>
+        <button (click)="initiatePayment()">Pay Now</button>
       </div>
     </div>
 

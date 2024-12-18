@@ -4,7 +4,7 @@ import { AddressService } from '../services/address.service';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+declare var Razorpay:any;
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -120,15 +120,46 @@ export class PaymentComponent implements OnInit {
     });
   }
 
+  initiatePayment() {
+    const options = {
+      key: 'rzp_test_FrfS6LXffXwNSX', // Replace with your Razorpay Test Key
+      amount: this.getCartTotal() * 100,  // Ensure this is in paise (₹500.00 becomes 50000 paise)
+      currency: 'INR',
+      name: 'Nature Hub',
+      description: 'Test Transaction',
+      handler: (response: any) => {
+        console.log('Payment Success:', response);
+        this.cartService.clearCart();
+
+        // Navigate to the home or success page after clearing the cart
+        this.router.navigate(['/']);
+        
+      },
+      prefill: {
+        name: 'Akhilesh Tripathi',
+        email: 'akhilesh@hdfc.com',
+        contact: '6387148460',
+      },
+      theme: {
+        color: '#3399cc',
+      },
+    };
+  
+    const rzp = new Razorpay(options);
+    rzp.open();
+  }
   // Proceed to payment method
   proceedToPay(): void {
     if (this.selectedAddress) {
       // Proceed with payment logic
       console.log('Payment successful for shipping to:', this.selectedAddress);
-      this.router.navigate(['/successpay']);  // Navigate to the success page
+  
+      // Clear the cart after payment
       this.cartService.clearCart();
+  
     } else {
       alert('Please select or enter an address for shipping.');
     }
   }
+  
 }

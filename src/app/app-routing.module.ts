@@ -34,7 +34,6 @@ import { AdminUserDetailsComponent } from './admin/admin-user-details/admin-user
 import { AdminProfileComponent } from './admin/admin-profile/admin-profile.component';
 import { AdminHealthTipFormComponent } from './admin/admin-health-tip-form/admin-health-tip-form.component';
 import { UserloginComponent } from './auth/userlogin/userlogin.component';
-import { PaysuccessfullComponent } from './paysuccessfull/paysuccessfull.component';
 import { DashboardComponent } from './Auth/dashboard/dashboard.component';
 
 
@@ -62,7 +61,6 @@ const routes: Routes = [
   {path:'hair',component:HairComponent,canActivate: [AuthGuard],data:{role:'user'}}, 
   {path:'immunity',component:ImmunityComponent,canActivate: [AuthGuard],data:{role:'user'}},
   {path:'digestion',component:DigestionComponent,canActivate: [AuthGuard],data:{role:'user'}},
-  {path:'successpay',component:PaysuccessfullComponent,canActivate: [AuthGuard],data:{role:'user'}},
   { path: 'admin-panel', component: AdminPanelComponent ,canActivate: [AuthGuard], data: { role: 'admin' }  },  // Specify role if needed (e.g., admin)},
   { path: 'admin-product', component: AdminProductComponent,canActivate: [AuthGuard], data: { role: 'admin' } },
   { path: 'admin-product-form', component: AdminProductFormComponent,canActivate: [AuthGuard], data: { role: 'admin' } },
