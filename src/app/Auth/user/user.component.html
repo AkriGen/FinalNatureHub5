@@ -1,19 +1,7 @@
-<div class="dashboard-container">
-  <h2>User Dashboard</h2>
-
-  <!-- Error Message -->
-  <div *ngIf="errorMessage" class="alert alert-danger">
-    {{ errorMessage }}
-  </div>
-
-  <!-- User Data -->
-  <div *ngIf="userData" class="user-card">
-    <h3>Welcome, {{ userData.UserName }}</h3>
-    <p><strong>Email:</strong> {{ userData.Email }}</p>
-  </div>
-
-  <!-- Loading State -->
-  <div *ngIf="!userData && !errorMessage" class="loading">
-    <p>Loading your profile...</p>
+<div class="container justify-content-center align-items-center min-vh-100">
+  <div class="profile-card shadow p-4 rounded">
+    <h3 class="text-center mb-4 fs-3"><b>User Profile</b></h3>
+    <p class="fs-5 "><strong >Username:</strong> {{ username }}</p>
+    <p class="fs-5"><strong>Email:</strong> {{ email }}</p>
   </div>
 </div>

@@ -1,0 +1,40 @@
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  .sidebar {
+    width: 250px;
+    min-height: 100vh;
+  }
+  
+  .sidebar .nav-link {
+    font-size: 1.2rem;
+    padding: 10px;
+    transition: background 0.3s;
+  }
+  
+  .sidebar .nav-link.active,
+  .sidebar .nav-link:hover {
+    background: #28a745;
+    color: white;
+  }
+  
+  .content {
+    background: #f9f9f9;
+    padding: 20px;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .dashboard-container {
+      flex-direction: column;
+    }
+    .sidebar {
+      width: 100%;
+      min-height: auto;
+    }
+    .content {
+      padding: 10px;
+    }
+  }

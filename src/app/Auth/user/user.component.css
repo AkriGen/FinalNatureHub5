@@ -1,35 +1,39 @@
-.dashboard-container {
-  max-width: 600px;
-  margin: 20px auto;
-  padding: 20px;
-  border-radius: 8px;
-  background: #ffffff;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Add a smooth scale animation */
+.profile-card {
+  max-width: 400px;
+  width: 100%;
+  animation: fadeIn 1s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 
-.user-card {
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  background: #f9f9f9;
+.profile-card:hover {
+  transform: scale(1.05); /* Slightly scale the card on hover */
 }
 
-.user-card h3 {
-  margin-bottom: 10px;
-  color: #333;
+/* Animation to make the card fade in */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.user-card p {
-  margin: 5px 0;
-  color: #555;
-}
+/* Make sure the card is centered both horizontally and vertically */
+.container {
+  margin-left: 750px;
+  margin-top: 200px;
+  }
 
-.alert {
-  color: #f00;
-  font-weight: bold;
-}
-
-.loading {
-  text-align: center;
-  color: #666;
+/* For smaller screens */
+@media (max-width: 576px) {
+  .profile-card {
+    padding: 2rem;
+  }
+  .container{
+    margin: 0%;
+  }
 }

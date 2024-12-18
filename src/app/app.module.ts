@@ -43,6 +43,7 @@ import { UserloginComponent } from './auth/userlogin/userlogin.component';
 import { PaysuccessfullComponent } from './paysuccessfull/paysuccessfull.component';
 import {  ToastrServiceWrapper } from './toastr.service';
 import { ToastrModule } from 'ngx-toastr';
+import { DashboardComponent } from './Auth/dashboard/dashboard.component';
 export function tokenGetter() { 
   return localStorage.getItem("jwt"); 
 }
@@ -60,7 +61,6 @@ export function tokenGetter() {
     SliderComponent,
     PrivacypolicyComponent,
     ContactusComponent,
-    CartComponent,
     BookmarkComponent,
     AboutusComponent,
     CancellationComponent,
@@ -70,7 +70,8 @@ export function tokenGetter() {
     ImmunityComponent,
     DigestionComponent,
     PopupComponent,
-    PaysuccessfullComponent
+    PaysuccessfullComponent,
+    DashboardComponent
     ],
   imports: [
     BrowserModule,
