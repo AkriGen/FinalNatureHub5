@@ -28,7 +28,11 @@ export class CartComponent implements OnInit {
     this.cartTotal = this.cartService.getCartTotal();
   }
 
-  // Update item quantity (+ or -) in the cart
+  removeItem(productId: number) {
+    this.cartService.removeItem(productId);  // Call removeItem method from CartService
+    this.loadCart();  // Reload cart after removing an item
+  }
+  
   updateQuantity(productId: number, change: number) {
     const product = this.cartItems.find(item => item.product.ProductId === productId);
     if (product) {
@@ -39,12 +43,8 @@ export class CartComponent implements OnInit {
       }
     }
   }
-
-  // Remove an item from the cart
-  removeItem(productId: number) {
-    this.cartService.removeItem(productId); // Call removeItem method from CartService
-    this.loadCart();  // Reload cart after removing an item
-  }
+  
+  
 
   // Navigate to the payment page
   proceedToPayment() {

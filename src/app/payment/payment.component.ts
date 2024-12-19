@@ -41,6 +41,8 @@ export class PaymentComponent implements OnInit {
     this.cartItems = this.cartService.getCartItems();
   }
 
+  
+
   getCartTotal(): number {
     return this.cartItems.reduce((total, item) => {
       return total + item.product.Price * item.quantity;
@@ -161,5 +163,7 @@ export class PaymentComponent implements OnInit {
       alert('Please select or enter an address for shipping.');
     }
   }
+
+  
   
 }
