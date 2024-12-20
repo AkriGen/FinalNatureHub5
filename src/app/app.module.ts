@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,11 +38,14 @@ import { PopupComponent } from './popup/popup.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthGuard } from './auth.guard';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {  HttpClient, HttpClientModule } from '@angular/common/http';
+import {  HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { UserloginComponent } from './auth/userlogin/userlogin.component';
 import {  ToastrServiceWrapper } from './toastr.service';
 import { ToastrModule } from 'ngx-toastr';
 import { DashboardComponent } from './Auth/dashboard/dashboard.component';
+import { ErrorNotificationComponent } from './error-notification/error-notification.component';
+import { ErrorInterceptor } from './interceptors/error-interceptor';
+import { ErrorPageComponent } from './error-page/error-page.component';
 export function tokenGetter() { 
   return localStorage.getItem("jwt"); 
 }
@@ -69,7 +72,9 @@ export function tokenGetter() {
     ImmunityComponent,
     DigestionComponent,
     PopupComponent,
-    DashboardComponent
+    DashboardComponent,
+    
+    
     ],
   imports: [
     BrowserModule,
@@ -78,12 +83,14 @@ export function tokenGetter() {
     SignupComponent,
     MatButtonModule,
     MatToolbarModule,  
+    ErrorNotificationComponent,
     MatIconModule,
     MatSidenavModule,
     ReactiveFormsModule,
     MatListModule,
     FormsModule,
     CommonModule,
+
     ToastrModule.forRoot(),    // Import ToastrModule
     HttpClientModule, 
     JwtModule.forRoot({
@@ -95,10 +102,13 @@ export function tokenGetter() {
     })
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },  // Register the interceptor
     [ToastrServiceWrapper],
     provideAnimationsAsync(),
     [AuthGuard]
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+ 
+
 })
 export class AppModule { }

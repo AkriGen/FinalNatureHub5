@@ -35,10 +35,12 @@ import { AdminProfileComponent } from './admin/admin-profile/admin-profile.compo
 import { AdminHealthTipFormComponent } from './admin/admin-health-tip-form/admin-health-tip-form.component';
 import { UserloginComponent } from './auth/userlogin/userlogin.component';
 import { DashboardComponent } from './Auth/dashboard/dashboard.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
+
   {path:'nav',component:NavComponent},
   {path:'footer',component:FooterComponent},
   {path:'signup',component:SignupComponent},
@@ -70,7 +72,8 @@ const routes: Routes = [
   { path: 'admin-user-details', component: AdminUserDetailsComponent ,canActivate: [AuthGuard], data: { role: 'admin' }},
   { path: 'admin-profile', component: AdminProfileComponent,canActivate: [AuthGuard], data: { role: 'admin' } },
   {path:'dashboard',component:DashboardComponent,canActivate: [AuthGuard],data:{role:'user'}},
-  {path:'address',component:AddressComponent,canActivate:[AuthGuard],data:{role:'user'}}
+  {path:'address',component:AddressComponent,canActivate:[AuthGuard],data:{role:'user'}},
+  { path: '**', component: ErrorPageComponent },
   
 
  

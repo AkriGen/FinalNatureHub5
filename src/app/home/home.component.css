@@ -296,9 +296,9 @@ body {
 
 .out-of-stock-label {
   position: absolute;
-  top: 10px;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%); /* Centers it both horizontally and vertically */
   background-color: rgba(255, 0, 0, 0.8);
   color: white;
   font-weight: bold;
