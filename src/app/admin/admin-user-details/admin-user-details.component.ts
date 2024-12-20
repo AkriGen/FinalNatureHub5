@@ -23,6 +23,7 @@ export class AdminUserDetailsComponent implements OnInit {
     this.userService.getUsers().subscribe(
       (data: User[]) => {
         this.users = data;
+        console.log(data)
        
       },
       (error) => {

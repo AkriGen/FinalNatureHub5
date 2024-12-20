@@ -6,6 +6,7 @@ export interface User {
   UserId: number;
   UserName: string;
   Email: string;
+  CreatedDate:Date;
 }
 
 @Injectable({

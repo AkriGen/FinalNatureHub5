@@ -47,7 +47,7 @@ export class UserloginComponent {
     }
 
     // Password Validation
-    const passwordRegex = /^[a-zA-Z]+[a-zA-Z0-9]{8,}$/;
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*(),.?\":{}|<>]).{8,}$/;
   if (!this.password || !passwordRegex.test(this.password)) {
     this.passwordError =
       'Password must be at least 8 characters long and include at least 1 uppercase letter, 1 lowercase letter, and 1 number.';
