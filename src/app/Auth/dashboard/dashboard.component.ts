@@ -9,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
 
+  activeTab: string = ''; // Tracks the active tab
+
+  setActiveTab(tab: string): void {
+    this.activeTab = tab;
+  }
 }

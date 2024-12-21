@@ -5,11 +5,9 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { SignupComponent } from './Auth/signup/signup.component';
 import { LoginComponent } from './Auth/login/login.component';
-
 import { AboutusComponent } from './aboutus/aboutus.component';
 import { BookmarkComponent } from './bookmark/bookmark.component';
 import { CartComponent } from './cart/cart.component';
-import { ContactusComponent } from './contactus/contactus.component';
 import { PaymentComponent } from './payment/payment.component';
 import { PrivacypolicyComponent } from './privacypolicy/privacypolicy.component';
 import { ProductComponent } from './product/product.component';
@@ -22,7 +20,6 @@ import { BodyComponent } from './category/body/body.component';
 import { HairComponent } from './category/hair/hair.component';
 import { ImmunityComponent } from './category/immunity/immunity.component';
 import { DigestionComponent } from './category/digestion/digestion.component';
-
 import { AuthGuard } from './auth.guard';
 import { AdminPanelComponent } from './admin/admin-panel/admin-panel.component';
 import { AdminProductComponent } from './admin/admin-product/admin-product.component';
@@ -36,6 +33,8 @@ import { AdminHealthTipFormComponent } from './admin/admin-health-tip-form/admin
 import { UserloginComponent } from './auth/userlogin/userlogin.component';
 import { DashboardComponent } from './Auth/dashboard/dashboard.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { AdminPaymentComponent } from './admin/admin-payment/admin-payment.component';
+import { UserpaymentComponent } from './userpayment/userpayment.component';
 
 
 const routes: Routes = [
@@ -49,7 +48,6 @@ const routes: Routes = [
   {path:'aboutus',component:AboutusComponent},
   {path:'bookmark',component:BookmarkComponent,canActivate: [AuthGuard] ,data:{role:'user'}},
   {path:'cart',component:CartComponent,canActivate: [AuthGuard],data:{role:'user'}},
-  {path:'contactus',component:ContactusComponent},
   {path:'payment',component:PaymentComponent,canActivate: [AuthGuard],data:{role:'user'}},
   {path:'privacy',component:PrivacypolicyComponent},
   {path:'product',component:ProductComponent,canActivate: [AuthGuard],data:{role:'user'}},
@@ -73,8 +71,9 @@ const routes: Routes = [
   { path: 'admin-profile', component: AdminProfileComponent,canActivate: [AuthGuard], data: { role: 'admin' } },
   {path:'dashboard',component:DashboardComponent,canActivate: [AuthGuard],data:{role:'user'}},
   {path:'address',component:AddressComponent,canActivate:[AuthGuard],data:{role:'user'}},
+  {path:'admin-pay',component:AdminPaymentComponent,canActivate:[AuthGuard],data:{role:'admin'}} ,
+  {path:'user-pay',component:UserpaymentComponent,canActivate:[AuthGuard],data:{role:'user'}},
   { path: '**', component: ErrorPageComponent },
-  
 
  
 ];

@@ -69,6 +69,8 @@ export class UserloginComponent {
         this.authService.storeAuthData(response.token, 'user');
         sessionStorage.setItem('username', this.username);
       sessionStorage.setItem('email', this.email);
+      localStorage.setItem('email', this.email);
+
          Swal.fire({
                 title: 'Success!',
                 text: `${this.username} logged in successfully`,

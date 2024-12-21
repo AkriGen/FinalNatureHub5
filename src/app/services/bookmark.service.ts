@@ -8,14 +8,15 @@ export class BookmarkService {
 
   private bookmarkKey = 'bookmarkedCards';
 
-  constructor(private toastr:ToastrServiceWrapper) { }
+  constructor(private toastr: ToastrServiceWrapper) { }
 
-  // Get all bookmarked cards from local storage
+  // Get all bookmarked cards from session storage
   getBookmarks(): any[] {
-    const bookmarks = localStorage.getItem(this.bookmarkKey);
+    const bookmarks = sessionStorage.getItem(this.bookmarkKey);
     return bookmarks ? JSON.parse(bookmarks) : [];
   }
 
+  // Add a bookmark to session storage
   addBookmark(card: { RemedyId: number, RemedyName: string, Remediesimg: string, Description: string, Benefits: string, PreperationMethod: string, UsageInstructions: string, CategoryId: number, createdBy: string, category: string }): void {
     const bookmarks = this.getBookmarks();
   
@@ -24,24 +25,21 @@ export class BookmarkService {
   
     if (bookmarkExists) {
       // Show alert if the bookmark already exists
-      this.toastr.warning('This bookmark has already been added.')
-
+      this.toastr.warning('This bookmark has already been added.');
     } else {
       // Add the bookmark if it does not already exist
       bookmarks.push(card);
-      localStorage.setItem(this.bookmarkKey, JSON.stringify(bookmarks));
-      this.toastr.success('Bookmark added successfully!!')
-
+      sessionStorage.setItem(this.bookmarkKey, JSON.stringify(bookmarks));
+      this.toastr.success('Bookmark added successfully!');
     }
   }
 
-  // Remove a bookmark from the bookmarks list
+  // Remove a bookmark from the bookmarks list in session storage
   removeBookmark(card: { RemedyId: number, RemedyName: string, Remediesimg: string, Description: string, Benefits: string, PreperationMethod: string, UsageInstructions: string, CategoryId: number, createdBy: string, category: string }): void {
     let bookmarks = this.getBookmarks();
     // Filter the bookmarks array by RemedyId to remove the correct card
     bookmarks = bookmarks.filter(b => b.RemedyId !== card.RemedyId);
-    localStorage.setItem(this.bookmarkKey, JSON.stringify(bookmarks));
-    this.toastr.success('Bookmark removed successfully!!')
-
+    sessionStorage.setItem(this.bookmarkKey, JSON.stringify(bookmarks));
+    this.toastr.success('Bookmark removed successfully!');
   }
 }

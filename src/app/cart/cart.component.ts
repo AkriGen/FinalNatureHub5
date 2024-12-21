@@ -15,7 +15,7 @@ import { FormsModule } from '@angular/forms';
 export class CartComponent implements OnInit {
   cartItems: { product: Product; quantity: number }[] = [];  // Specify the type for cart items
   cartTotal: number = 0;
-
+  
   constructor(public cartService: CartService, private router: Router) {}
 
   ngOnInit(): void {
@@ -47,10 +47,24 @@ export class CartComponent implements OnInit {
   
 
   // Navigate to the payment page
+ 
   proceedToPayment() {
-    this.router.navigate(['/payment']);  // Navigate to the payment page
+    const paymentData = {
+      cartTotal: this.cartTotal,
+      products: this.cartItems.map(item => ({
+        name: item.product.ProductName,
+        userEmail: localStorage.getItem('email') ,
+        quantity: item.quantity,
+      })),
+    };
+    sessionStorage.setItem('paymentData', JSON.stringify(paymentData));
+    const payments = JSON.parse(localStorage.getItem('payments') || '[]');
+    payments.push(paymentData);
+    localStorage.setItem('payments', JSON.stringify(payments));
+    
+    this.router.navigate(['/payment']);
   }
-
+  
   // Clear all items in the cart
   clearCart() {
     this.cartService.clearCart();  // Call the clearCart method from CartService

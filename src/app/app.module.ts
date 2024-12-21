@@ -14,26 +14,19 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { HomeComponent } from './home/home.component';
-import { ProductComponent } from './product/product.component';
 import { RemediesComponent } from './remedies/remedies.component';
 import { SliderComponent } from './slider/slider.component';
 import { PrivacypolicyComponent } from './privacypolicy/privacypolicy.component';
-import { ContactusComponent } from './contactus/contactus.component';
-import { CartComponent } from './cart/cart.component';
 import { BookmarkComponent } from './bookmark/bookmark.component';
 import { AboutusComponent } from './aboutus/aboutus.component';
-import { HelthtipsComponent } from './helthtips/helthtips.component';
-import { PaymentComponent } from './payment/payment.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { AddressComponent } from './address/address.component';
 import { CancellationComponent } from './cancellation/cancellation.component';
 import { SkinComponent } from './category/skin/skin.component';
 import { HairComponent } from './category/hair/hair.component';
 import { BodyComponent } from './category/body/body.component';
 import { ImmunityComponent } from './category/immunity/immunity.component';
 import { DigestionComponent } from './category/digestion/digestion.component';
-
 import { PopupComponent } from './popup/popup.component';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AuthGuard } from './auth.guard';
@@ -46,6 +39,8 @@ import { DashboardComponent } from './Auth/dashboard/dashboard.component';
 import { ErrorNotificationComponent } from './error-notification/error-notification.component';
 import { ErrorInterceptor } from './interceptors/error-interceptor';
 import { ErrorPageComponent } from './error-page/error-page.component';
+import { AdminPaymentComponent } from './admin/admin-payment/admin-payment.component';
+import { UserpaymentComponent } from './userpayment/userpayment.component';
 export function tokenGetter() { 
   return localStorage.getItem("jwt"); 
 }
@@ -62,7 +57,6 @@ export function tokenGetter() {
     RemediesComponent,
     SliderComponent,
     PrivacypolicyComponent,
-    ContactusComponent,
     BookmarkComponent,
     AboutusComponent,
     CancellationComponent,
@@ -73,6 +67,8 @@ export function tokenGetter() {
     DigestionComponent,
     PopupComponent,
     DashboardComponent,
+    AdminPaymentComponent,
+    UserpaymentComponent,
     
     
     ],
